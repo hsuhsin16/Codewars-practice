@@ -4,9 +4,11 @@
 int main()
 {
 
-     char str[01];
+     char str[10];
+     char a = '(';
 
     scanf("%s",str);
+     printf("%c",a);
     printf("%s",str);
     return 0;
 }
