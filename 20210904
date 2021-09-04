@@ -1,34 +1,19 @@
- #include <stdio.h>
-    #include <string.h>
+#include <criterion/criterion.h>
 
-int main()
+char *create_phone_number(char phnum[15], const unsigned char nums[10]);
+
+void assert_eq(char *actual, const char *expected)
 {
-
-     char str[10];
-     char a = '(';
-
-    scanf("%s",str);
-     printf("%c",a);
-    printf("%s",str);
-    return 0;
+    if (!actual)
+        cr_assert_fail("*Actual*: NULL\nExpected: \"%s\"", expected);
+    else
+        cr_assert_str_eq(actual, expected, "*Actual*: \"%s\"\nExpected: \"%s\"", actual, expected);
 }
 
-
-/*
-create_phone_number(phnum, (const unsigned char[]){1,2,3,4,5,6,7,8,9,0});
-     phnum <- "(123) 456-7890"
-
-
-*/
-
-/*
-
+Test(Sample_Test, should_return_the_phone_number)
 {
-    char str[80];
-
-    scanf("%s",str);
-    printf("%s",str);
-    return 0;
+    char phnum[15];
+    assert_eq(create_phone_number(phnum, (const unsigned char[]){ 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 }), "(123) 456-7890");
+    assert_eq(create_phone_number(phnum, (const unsigned char[]){ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }), "(111) 111-1111");
+    assert_eq(create_phone_number(phnum, (const unsigned char[]){ 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 }), "(123) 456-7890");
 }
-
-*/
